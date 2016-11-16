@@ -5,10 +5,20 @@ import * as actions from './redux/actions';
 
 class Chores extends Component {
 	onCheckPressed() {
+		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
+		//to disable a button: disabled={true}
 		this.props.dispatch(actions.increaseTicketCount(1));
 	}
 
+	onXPressed() {
+		//delete the chore, add 0 tickets
+		//this.props.showChore
+		this.props.dispatch(actions.removeChore());
+		console.log('-=-=-=-=-=-=-=-=-=', this.props.showChore);
+	}
+
 	render() {
+		//const show;
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -28,7 +38,8 @@ class Chores extends Component {
 					<Text style={styles.textBox}>Clean your room</Text>
 
 					<TouchableHighlight style={styles.badButton}
-						underlayColor='#a51313'>
+						underlayColor='#a51313'
+						onPress={this.onXPressed.bind(this)}>
 						<Text style={styles.centerText}>X</Text>
 					</TouchableHighlight>
 				</View>
@@ -47,6 +58,7 @@ class Chores extends Component {
 let mapStateToProps = function(state, props) {
 	return {
 		ticketCount: state.ticketCount,
+		showChore: state.showChore,
 	}
 }
 

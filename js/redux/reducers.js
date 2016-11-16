@@ -1,9 +1,9 @@
-//reducers
 import * as actions from './actions';
 
 const initialState = {
 	ticketCount: 0,
 	choreList: [],
+	showChore: true,
 };
 
 export default function choreReducer(state = initialState, action = {}) {
@@ -12,6 +12,11 @@ export default function choreReducer(state = initialState, action = {}) {
 			return Object.assign({}, state, {
 				ticketCount: state.ticketCount += action.payload
 			});
+
+		case actions.REMOVE_CHORE:
+			return Object.assign({}, state, {
+				showChore: false
+			})
 
 		default:
 			return state;

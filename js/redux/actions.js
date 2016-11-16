@@ -5,3 +5,10 @@ export function increaseTicketCount(count) {
         payload: count,
     };
 }
+
+export const REMOVE_CHORE = 'REMOVE_CHORE';
+export function removeChore() {
+	return {
+		type: REMOVE_CHORE,
+	}
+}
