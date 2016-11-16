@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, NavigatorIOS} from 'react-native';
-
+import { Provider } from 'react-redux';
+import store from './js/redux/store';
 import Chores from './js/chores'
 
 export default class ChoreList extends Component {
     render() {
         return (
-            <NavigatorIOS style={styles.container}
-                initialRoute={{
-                    title: 'Chore List',
-                    component: Chores,
-                }}
-            />
+            <Provider store={store}>
+                <NavigatorIOS style={styles.container}
+                    initialRoute={{
+                        title: 'Chore List',
+                        component: Chores,
+                    }}
+                />
+            </Provider>
         );
     }
 }

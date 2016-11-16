@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
-import actions from './redux/actions';
+import * as actions from './redux/actions';
 
-export default class Chores extends Component {
+class Chores extends Component {
 	onCheckPressed() {
-		this.props.dispatch(actions.increaseTicketCount(this.props.ticketCount));
+		this.props.dispatch(actions.increaseTicketCount(1));
 	}
 
 	render() {
@@ -21,7 +21,7 @@ export default class Chores extends Component {
 				<View style={styles.mainContainer}>
 					<TouchableHighlight style={styles.goodButton}
 						underlayColor='#57a85b'
-						onPress={this.onCheckPressed}>
+						onPress={this.onCheckPressed.bind(this)}>
 						<Text style={styles.centerText}>Check</Text>
 					</TouchableHighlight>
 
@@ -50,7 +50,7 @@ let mapStateToProps = function(state, props) {
 	}
 }
 
-//export default connect(mapStateToProps)(Chores);
+export default connect(mapStateToProps)(Chores);
 
 const styles = StyleSheet.create({
 	topContainer: {
