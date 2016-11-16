@@ -35,7 +35,7 @@ export function addChoreText(text) {
 	return {
 		type: ADD_CHORE_TEXT,
 		payload: text,
-	}
+	};
 }
 
 export const IS_CHORE_ACTIVE = 'IS_CHORE_ACTIVE';
@@ -43,5 +43,5 @@ export function isChoreActive(bool) {
 	return {
 		type: IS_CHORE_ACTIVE,
 		payload: bool,
-	}
+	};
 }
