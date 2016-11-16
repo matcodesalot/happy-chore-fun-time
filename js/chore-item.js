@@ -8,14 +8,36 @@ class ChoreItem extends Component {
 		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
 		//to disable a button: disabled={true}
 		this.props.dispatch(actions.increaseTicketCount(1));
+		this.props.dispatch(actions.isChoreActive(false));
 	}
 
 	onXPressed() {
-		//delete the chore, add 0 tickets
+		//delete the chore
 		this.props.dispatch(actions.removeChore(this.props.index));
 	}
 
 	render() {
+		if (!this.props.isActive) {
+			return (
+				<View style={styles.mainContainer}>
+					<TouchableHighlight style={styles.goodButton}
+						disabled={true}
+						underlayColor='#57a85b'
+						onPress={this.onCheckPressed.bind(this)}>
+						<Text style={styles.centerText}>Check</Text>
+					</TouchableHighlight>
+
+					<Text style={styles.textBox}>{this.props.chore.text}</Text>
+
+					<TouchableHighlight style={styles.badButton}
+						underlayColor='#a51313'
+						onPress={this.onXPressed.bind(this)}>
+						<Text style={styles.centerText}>X</Text>
+					</TouchableHighlight>
+				</View>
+			);
+		}
+		
 		return (
 			<View style={styles.mainContainer}>
 				<TouchableHighlight style={styles.goodButton}

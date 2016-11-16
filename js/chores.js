@@ -20,8 +20,8 @@ class Chores extends Component {
 	                </Text>
 	            </View>
 
-            	{this.props.choreList.map((chore, index) => <ChoreItem key={index} index={index} chore={chore} />)}
-            	<AddChore addingChore={this.props.addingChore} />
+            	{this.props.choreList.map((chore, index) => <ChoreItem key={index} index={index} chore={chore} isActive={this.props.isActive} />)}
+            	<AddChore addingChore={this.props.addingChore} choreText={this.props.choreText} />
 
 				<View style={styles.addContainer}>
 					<TouchableHighlight
@@ -38,8 +38,10 @@ class Chores extends Component {
 let mapStateToProps = function(state, props) {
 	return {
 		ticketCount: state.ticketCount,
-		addingChore: state.addingChore,
 		choreList: state.choreList,
+		addingChore: state.addingChore,
+		choreText: state.choreText,
+		isActive: state.isActive,
 	}
 }
 

@@ -5,6 +5,7 @@ const initialState = {
 	choreList: [ { text: 'Clean your room' }, { text: 'Brush your teeth' } ],
 	addingChore: false,
 	choreText: '',
+	isActive: true,
 };
 
 export default function choreReducer(state = initialState, action = {}) {
@@ -32,6 +33,11 @@ export default function choreReducer(state = initialState, action = {}) {
 		case actions.ADD_CHORE_TEXT:
 			return Object.assign({}, state, {
 				choreText: action.payload
+			});
+
+		case actions.IS_CHORE_ACTIVE:
+			return Object.assign({}, state, {
+				isActive: action.payload
 			});
 
 		default:

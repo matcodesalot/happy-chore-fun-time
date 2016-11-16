@@ -26,13 +26,7 @@ class AddChore extends Component {
 	}
 }
 
-let mapStateToProps = function(state, props) {
-	return {
-		choreText: state.choreText,
-	}
-}
-
-export default connect(mapStateToProps)(AddChore);
+export default connect()(AddChore);
 
 const styles = StyleSheet.create({
 	container: {
