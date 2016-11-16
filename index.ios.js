@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, NavigatorIOS} from 'react-native';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import store from './js/redux/store';
 import Chores from './js/chores'
 

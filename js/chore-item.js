@@ -3,7 +3,7 @@ import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-nativ
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
 
-class OneChore extends Component {
+class ChoreItem extends Component {
 	onCheckPressed() {
 		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
 		//to disable a button: disabled={true}
@@ -12,7 +12,7 @@ class OneChore extends Component {
 
 	onXPressed() {
 		//delete the chore, add 0 tickets
-		this.props.dispatch(actions.removeChore());
+		this.props.dispatch(actions.removeChore(this.props.index));
 	}
 
 	render() {
@@ -24,7 +24,7 @@ class OneChore extends Component {
 					<Text style={styles.centerText}>Check</Text>
 				</TouchableHighlight>
 
-				<Text style={styles.textBox}>Clean your room</Text>
+				<Text style={styles.textBox}>{this.props.chore.text}</Text>
 
 				<TouchableHighlight style={styles.badButton}
 					underlayColor='#a51313'
@@ -36,7 +36,7 @@ class OneChore extends Component {
 	}
 }
 
-export default connect()(OneChore);
+export default connect()(ChoreItem);
 
 const styles = StyleSheet.create({
 	mainContainer: {

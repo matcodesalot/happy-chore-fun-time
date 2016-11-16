@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
-import OneChore from './one-chore';
+import ChoreItem from './chore-item';
+import AddChore from './add-chore';
 
 class Chores extends Component {
+	onAddPressed() {
+		this.props.dispatch(actions.addingChore(true));
+	}
+
 	render() {
-		const show = this.props.showChore ? (<OneChore />) : (<View />);
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -16,11 +20,13 @@ class Chores extends Component {
 	                </Text>
 	            </View>
 
-				{show}
+            	{this.props.choreList.map((chore, index) => <ChoreItem key={index} index={index} chore={chore} />)}
+            	<AddChore addingChore={this.props.addingChore} />
 
 				<View style={styles.addContainer}>
 					<TouchableHighlight
-						underlayColor='#656565'>
+						underlayColor='#656565'
+						onPress={this.onAddPressed.bind(this)}>
 						<Text style={styles.addText}>+</Text>
 					</TouchableHighlight>
 				</View>
@@ -32,7 +38,8 @@ class Chores extends Component {
 let mapStateToProps = function(state, props) {
 	return {
 		ticketCount: state.ticketCount,
-		showChore: state.showChore,
+		addingChore: state.addingChore,
+		choreList: state.choreList,
 	}
 }
 
