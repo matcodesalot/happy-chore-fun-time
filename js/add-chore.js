@@ -1,23 +1,38 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-native';
-//import {connect} from 'react-redux';
-//import * as actions from './redux/actions';
+import {connect} from 'react-redux';
+import * as actions from './redux/actions';
 
-export default class AddChore extends Component {
+class AddChore extends Component {
+	onSubmitPressed() {
+		this.props.dispatch(actions.submitChore(this.props.choreText));
+		this.props.dispatch(actions.addingChore(false));
+	}
+
 	render() {
 		if (!this.props.addingChore) return null;
 		return(
 			<View style={styles.container}>
 				<TextInput style={styles.input}
-					placeholder='Enter a chore' />
+					placeholder='Enter a chore'
+					onChangeText={(text) => this.props.dispatch(actions.addChoreText(text))}/>
 				<TouchableHighlight style={styles.submitButton}
-					underlayColor='#99d9f4'>
+					underlayColor='#99d9f4'
+					onPress={this.onSubmitPressed.bind(this)}>
 					<Text style={styles.buttonText}>Submit</Text>
 				</TouchableHighlight>
 			</View>
 		);
 	}
 }
+
+let mapStateToProps = function(state, props) {
+	return {
+		choreText: state.choreText,
+	}
+}
+
+export default connect(mapStateToProps)(AddChore);
 
 const styles = StyleSheet.create({
 	container: {

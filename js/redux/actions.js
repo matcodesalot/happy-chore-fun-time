@@ -21,3 +21,19 @@ export function addingChore(bool) {
 		payload: bool,
 	};
 }
+
+export const SUBMIT_CHORE = 'SUBMIT_CHORE';
+export function submitChore(newChore) {
+	return {
+		type: SUBMIT_CHORE,
+		payload: newChore,
+	};
+}
+
+export const ADD_CHORE_TEXT = 'ADD_CHORE_TEXT';
+export function addChoreText(text) {
+	return {
+		type: ADD_CHORE_TEXT,
+		payload: text,
+	}
+}
