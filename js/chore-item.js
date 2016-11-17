@@ -6,7 +6,6 @@ import * as actions from './redux/actions';
 class ChoreItem extends Component {
 	onCheckPressed() {
 		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
-		//to disable a button: disabled={true}
 		this.props.dispatch(actions.increaseTicketCount(1));
 		this.props.dispatch(actions.isChoreActive(false));
 	}
@@ -24,26 +23,26 @@ class ChoreItem extends Component {
 						disabled={true}
 						underlayColor='#57a85b'
 						onPress={this.onCheckPressed.bind(this)}>
-						<Text style={styles.centerText}>Check</Text>
+						<Text style={styles.buttonText}>Check</Text>
 					</TouchableHighlight>
 
-					<Text style={styles.textBox}>{this.props.chore.text}</Text>
+					<Text style={styles.textBoxDone}>{this.props.chore.text}{"\n"}(Done!)</Text>
 
 					<TouchableHighlight style={styles.badButton}
 						underlayColor='#a51313'
 						onPress={this.onXPressed.bind(this)}>
-						<Text style={styles.centerText}>X</Text>
+						<Text style={styles.buttonText}>X</Text>
 					</TouchableHighlight>
 				</View>
 			);
 		}
-		
+
 		return (
 			<View style={styles.mainContainer}>
 				<TouchableHighlight style={styles.goodButton}
 					underlayColor='#57a85b'
 					onPress={this.onCheckPressed.bind(this)}>
-					<Text style={styles.centerText}>Check</Text>
+					<Text style={styles.buttonText}>Check</Text>
 				</TouchableHighlight>
 
 				<Text style={styles.textBox}>{this.props.chore.text}</Text>
@@ -51,7 +50,7 @@ class ChoreItem extends Component {
 				<TouchableHighlight style={styles.badButton}
 					underlayColor='#a51313'
 					onPress={this.onXPressed.bind(this)}>
-					<Text style={styles.centerText}>X</Text>
+					<Text style={styles.buttonText}>X</Text>
 				</TouchableHighlight>
 			</View>
 		);
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
 		paddingLeft: 10,
 		paddingRight: 10,
 		backgroundColor: '#ef3232',
-		borderColor: '#48BBEC',
+		borderColor: '#721919',
 		borderWidth: 1,
 		justifyContent: 'center',
 		//borderRadius: 8,
@@ -100,4 +99,16 @@ const styles = StyleSheet.create({
 		//alignSelf: 'center',
 		marginRight: 10,
 	},
+	buttonText: {
+		color: 'black',
+	},
+	textBoxDone: {
+		flex: 1,
+		height: 36,
+		borderColor: '#48BBEC',
+		borderWidth: 1,
+		backgroundColor: '#91ff9b',
+		textAlign: 'center',
+		marginRight: 10,
+	}
 });

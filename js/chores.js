@@ -7,10 +7,11 @@ import AddChore from './add-chore';
 
 class Chores extends Component {
 	onAddPressed() {
-		this.props.dispatch(actions.addingChore(true));
+		this.props.dispatch(actions.addingChore(!this.props.addingChore));
 	}
 
 	render() {
+		const plusOrX = !this.props.addingChore ? (<Text style={styles.addText}>+</Text>) : (<Text style={styles.addText}>x</Text>)
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -27,7 +28,7 @@ class Chores extends Component {
 					<TouchableHighlight
 						underlayColor='#656565'
 						onPress={this.onAddPressed.bind(this)}>
-						<Text style={styles.addText}>+</Text>
+						{plusOrX}
 					</TouchableHighlight>
 				</View>
 			</View>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
 	topContainer: {
         marginTop: 60,
         marginBottom: 60,
+        paddingRight: 12,
     },
     ticketText: {
         color: '#48BBEC',
@@ -60,9 +62,6 @@ const styles = StyleSheet.create({
     },
     underline: {
         textDecorationLine: 'underline',
-    },
-    centerText: {
-    	alignSelf: 'center',
     },
 	addContainer: {
 		marginBottom: 10,
