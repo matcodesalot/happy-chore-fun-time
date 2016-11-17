@@ -7,7 +7,7 @@ class ChoreItem extends Component {
 	onCheckPressed() {
 		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
 		this.props.dispatch(actions.increaseTicketCount(1));
-		this.props.dispatch(actions.isChoreActive(false));
+		this.props.dispatch(actions.setChoreInactive(this.props.index));
 	}
 
 	onXPressed() {
@@ -16,7 +16,7 @@ class ChoreItem extends Component {
 	}
 
 	render() {
-		if (!this.props.isActive) {
+		if (!this.props.chore.isActive) {
 			return (
 				<View style={styles.mainContainer}>
 					<TouchableHighlight style={styles.goodButton}

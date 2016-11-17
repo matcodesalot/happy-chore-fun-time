@@ -38,10 +38,10 @@ export function addChoreText(text) {
 	};
 }
 
-export const IS_CHORE_ACTIVE = 'IS_CHORE_ACTIVE';
-export function isChoreActive(bool) {
+export const SET_CHORE_INACTIVE = 'SET_CHORE_INACTIVE';
+export function setChoreInactive(index) {
 	return {
-		type: IS_CHORE_ACTIVE,
-		payload: bool,
+		type: SET_CHORE_INACTIVE,
+		payload: index,
 	};
 }
