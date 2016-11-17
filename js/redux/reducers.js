@@ -58,7 +58,6 @@ export default function choreReducer(state = initialState, action = {}) {
 			let endList = state.choreList.slice(action.payload + 1, state.choreList.length);
 			let startAndMiddleList = startList.concat({text: state.choreList[action.payload].text, isActive: !state.choreList[action.payload].isActive});
 			let completeList = startAndMiddleList.concat(endList);
-			console.log("-=-=-=-=-=-=", action.payload);
 			return Object.assign({}, state, {
 				choreList: completeList
 			});
