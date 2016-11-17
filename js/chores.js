@@ -11,7 +11,7 @@ class Chores extends Component {
 	}
 
 	render() {
-		const plusOrX = !this.props.addingChore ? (<Text style={styles.addText}>+</Text>) : (<Text style={styles.addText}>x</Text>)
+		const plusOrX = !this.props.addingChore ? (<Text style={styles.addText}>+</Text>) : (<Text style={styles.addTextRotate}>+</Text>)
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -26,7 +26,7 @@ class Chores extends Component {
 
 				<View style={styles.addContainer}>
 					<TouchableHighlight
-						underlayColor='#656565'
+						underlayColor='white'
 						onPress={this.onAddPressed.bind(this)}>
 						{plusOrX}
 					</TouchableHighlight>
@@ -70,6 +70,11 @@ const styles = StyleSheet.create({
 	},
 	addText: {
 		fontSize: 48,
-		color: '#48BBEC'
+		color: '#48BBEC',
+	},
+	addTextRotate: {
+		fontSize: 48,
+		color: '#48BBEC',
+		transform: [{rotate: '45deg'}],
 	}
 });
