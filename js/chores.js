@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
 import ChoreItem from './chore-item';

@@ -1,13 +1,48 @@
-import React, {Component, PropTypes} from 'react';
-import {StyleSheet, Text, TextInput, View, TouchableHighlight, NavigatorIOS} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
-import Chores from './chores';
+import RewardItem from './reward-item';
 
-export default class Rewards extends Component {
+class Rewards extends Component {
 	render() {
 		return(
-			<Text style={{marginTop: 200, alignSelf: 'center'}}>COOL</Text>
+			<View>
+				<View style={styles.topContainer}>
+	                <Text style={styles.ticketText}>tickets:
+	                    &nbsp;
+	                    <Text style={styles.underline}>{this.props.ticketCount}</Text>
+	                </Text>
+	            </View>
+				
+				{this.props.rewardList.map((reward, index) => <RewardItem key={index} index={index} reward={reward} />)}
+			</View>
 		);
 	}
 }
+
+let mapStateToProps = function(state, props) {
+	return {
+		ticketCount: state.ticketCount,
+		rewardList: state.rewardList,
+	}
+}
+
+export default connect(mapStateToProps)(Rewards);
+
+const styles = StyleSheet.create({
+	topContainer: {
+        marginTop: 60,
+        marginBottom: 60,
+        paddingRight: 12,
+    },
+    ticketText: {
+        color: '#48BBEC',
+        fontSize: 16,
+        textAlign: 'right',
+        margin: 10,
+    },
+    underline: {
+        textDecorationLine: 'underline',
+    },
+});

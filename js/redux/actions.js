@@ -1,9 +1,17 @@
 export const INCREASE_TICKET_COUNT = 'INCREASE_TICKET_COUNT';
-export function increaseTicketCount(count) {
+export function increaseTicketCount(amount) {
     return {
         type: INCREASE_TICKET_COUNT,
-        payload: count,
+        payload: amount,
     };
+}
+
+export const DECREASE_TICKET_COUNT = 'DECREASE_TICKET_COUNT';
+export function decreaseTicketCount(amount) {
+	return {
+		type: DECREASE_TICKET_COUNT,
+		payload: amount,
+	}
 }
 
 export const REMOVE_CHORE = 'REMOVE_CHORE';
@@ -42,6 +50,14 @@ export const SET_CHORE_INACTIVE = 'SET_CHORE_INACTIVE';
 export function setChoreInactive(index) {
 	return {
 		type: SET_CHORE_INACTIVE,
+		payload: index,
+	};
+}
+
+export const INCREASE_ITEM_AMOUNT = 'INCREASE_ITEM_AMOUNT';
+export function increaseItemAmount(index) {
+	return {
+		type: INCREASE_ITEM_AMOUNT,
 		payload: index,
 	};
 }

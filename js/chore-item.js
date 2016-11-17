@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TextInput, View, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 import * as actions from './redux/actions';
 
 class ChoreItem extends Component {
 	onCheckPressed() {
-		//add 1 ticket, make the check and X button inactive, turn the background of the textBox green
+		//add 1 ticket, make the check button inactive, turn the background of the textBox green
 		this.props.dispatch(actions.increaseTicketCount(1));
 		this.props.dispatch(actions.setChoreInactive(this.props.index));
 	}
