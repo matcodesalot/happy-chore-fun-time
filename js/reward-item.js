@@ -8,11 +8,12 @@ class RewardItem extends Component {
 		if(this.props.ticketCount < this.props.reward.cost) {
 			//you do not have enough tickets to purchase this item
 			this.props.dispatch(actions.canIBuyIt(false));
+			this.props.dispatch(actions.insufficientFunds(true));
 		}
 		else {
 			//you have enough tickets
 			this.props.dispatch(actions.canIBuyIt(true));
-			this.props.dispatch(actions.decreaseTicketCount(this.props.reward.cost));
+			this.props.dispatch(actions.increaseTicketCount(-this.props.reward.cost));
 			this.props.dispatch(actions.increaseItemAmount(this.props.index));
 		}
 	}
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
 	buyButton: {
 		height: 36,
 		width: 335,
+		//flex: 1,
 		paddingLeft: 10,
 		paddingRight: 10,
 		backgroundColor: '#48BBEC',

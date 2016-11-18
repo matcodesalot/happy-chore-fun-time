@@ -6,14 +6,6 @@ export function increaseTicketCount(amount) {
     };
 }
 
-export const DECREASE_TICKET_COUNT = 'DECREASE_TICKET_COUNT';
-export function decreaseTicketCount(amount) {
-	return {
-		type: DECREASE_TICKET_COUNT,
-		payload: amount,
-	}
-}
-
 export const REMOVE_CHORE = 'REMOVE_CHORE';
 export function removeChore(index) {
 	return {
@@ -68,4 +60,12 @@ export function canIBuyIt(bool) {
 		type: CAN_I_BUY_IT,
 		payload: bool,
 	};
+}
+
+export const INSUFFICIENT_FUNDS = 'INSUFFICIENT_FUNDS';
+export function insufficientFunds(bool) {
+	return {
+		type: INSUFFICIENT_FUNDS,
+		payload: bool,
+	}
 }

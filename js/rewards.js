@@ -6,7 +6,8 @@ import RewardItem from './reward-item';
 
 class Rewards extends Component {
 	render() {
-		const feedback = this.props.isBuyable ? (<Text style={styles.money}>You bought it!</Text>) : (<Text style={styles.noMoney}>Insufficient funds :(</Text>);
+		const isInsufficient = this.props.isInsufficient ? (<Text style={styles.noMoney}>Insufficient funds :(</Text>) : null;
+		const feedback = this.props.isBuyable ? (<Text style={styles.money}>You bought it!</Text>) : (isInsufficient);
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -31,6 +32,7 @@ let mapStateToProps = function(state, props) {
 		ticketCount: state.ticketCount,
 		rewardList: state.rewardList,
 		isBuyable: state.isBuyable,
+		isInsufficient: state.isInsufficient,
 	}
 }
 

@@ -14,6 +14,7 @@ const initialState = {
 		{text: 'trip to the zoo', cost: 100, amount: 0},
 	],
 	isBuyable: false,
+	isInsufficient: false,
 };
 
 export default function choreReducer(state = initialState, action = {}) {
@@ -21,11 +22,6 @@ export default function choreReducer(state = initialState, action = {}) {
 		case actions.INCREASE_TICKET_COUNT:
 			return Object.assign({}, state, {
 				ticketCount: state.ticketCount += action.payload
-			});
-
-		case actions.DECREASE_TICKET_COUNT:
-			return Object.assign({}, state, {
-				ticketCount: state.ticketCount -= action.payload
 			});
 
 		case actions.REMOVE_CHORE:
@@ -107,6 +103,11 @@ export default function choreReducer(state = initialState, action = {}) {
 		case actions.CAN_I_BUY_IT:
 			return Object.assign({}, state, {
 				isBuyable: action.payload
+			});
+
+		case actions.INSUFFICIENT_FUNDS:
+			return Object.assign({}, state, {
+				isInsufficient: action.payload
 			});
 
 		default:
