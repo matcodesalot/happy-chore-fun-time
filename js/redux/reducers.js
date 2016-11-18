@@ -19,10 +19,10 @@ const initialState = {
 
 export default function choreReducer(state = initialState, action = {}) {
 	switch(action.type) {
-		case actions.INCREASE_TICKET_COUNT:
-			return Object.assign({}, state, {
-				ticketCount: state.ticketCount += action.payload
-			});
+		// case actions.INCREASE_TICKET_COUNT:
+		// 	return Object.assign({}, state, {
+		// 		ticketCount: state.ticketCount += action.payload
+		// 	});
 
 		case actions.REMOVE_CHORE:
 			return Object.assign({}, state, {
@@ -108,6 +108,11 @@ export default function choreReducer(state = initialState, action = {}) {
 		case actions.INSUFFICIENT_FUNDS:
 			return Object.assign({}, state, {
 				isInsufficient: action.payload
+			});
+
+		case actions.GATHER_DATA:
+			return Object.assign({}, state, {
+				ticketCount: action.payload
 			});
 
 		default:

@@ -6,8 +6,9 @@ import * as actions from './redux/actions';
 class ChoreItem extends Component {
 	onCheckPressed() {
 		//add 1 ticket, make the check button inactive, turn the background of the textBox green
-		this.props.dispatch(actions.increaseTicketCount(1));
+		// this.props.dispatch(actions.increaseTicketCount(1));
 		this.props.dispatch(actions.setChoreInactive(this.props.index));
+		this.props.dispatch(actions.saveTicketCount())
 	}
 
 	onXPressed() {

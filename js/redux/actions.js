@@ -1,10 +1,12 @@
-export const INCREASE_TICKET_COUNT = 'INCREASE_TICKET_COUNT';
-export function increaseTicketCount(amount) {
-    return {
-        type: INCREASE_TICKET_COUNT,
-        payload: amount,
-    };
-}
+import {AsyncStorage} from 'react-native';
+
+// export const INCREASE_TICKET_COUNT = 'INCREASE_TICKET_COUNT';
+// export function increaseTicketCount(amount) {
+//     return {
+//         type: INCREASE_TICKET_COUNT,
+//         payload: amount,
+//     };
+// }
 
 export const REMOVE_CHORE = 'REMOVE_CHORE';
 export function removeChore(index) {
@@ -67,5 +69,32 @@ export function insufficientFunds(bool) {
 	return {
 		type: INSUFFICIENT_FUNDS,
 		payload: bool,
+	}
+}
+
+export const GATHER_DATA = 'GATHER_DATA';
+export function gatherData(data) {
+	return {
+		type: GATHER_DATA,
+		payload: data,
+	}
+}
+
+export function fetchData() {
+	let data = AsyncStorage.getAllKeys();
+	console.log("-=-=-=-=-=-=", "data");
+	return dispatch(gatherData(data));
+}
+
+export function saveData(key, value) {
+	AnyncStorage.setItem(key, value);
+	return dispatch(fetchData())
+}
+
+export function saveTicketCount() {
+	return dispatch => {
+		dispatch(fetchData())
+		let previousAmount = AsyncStorage.getItem("ticketCount");
+		return AsyncStorage.setItem("ticketCount", previousAmount + 1);
 	}
 }
