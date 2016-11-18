@@ -61,3 +61,11 @@ export function increaseItemAmount(index) {
 		payload: index,
 	};
 }
+
+export const CAN_I_BUY_IT = 'CAN_I_BUY_IT';
+export function canIBuyIt(bool) {
+	return {
+		type: CAN_I_BUY_IT,
+		payload: bool,
+	};
+}

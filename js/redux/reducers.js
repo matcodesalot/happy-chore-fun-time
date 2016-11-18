@@ -13,6 +13,7 @@ const initialState = {
 		{text: 'pizza party', cost: 25, amount: 0},
 		{text: 'trip to the zoo', cost: 100, amount: 0},
 	],
+	isBuyable: false,
 };
 
 export default function choreReducer(state = initialState, action = {}) {
@@ -101,6 +102,11 @@ export default function choreReducer(state = initialState, action = {}) {
 			let completeRewardList = startAndMiddleRewardList.concat(endRewardList);
 			return Object.assign({}, state, {
 				rewardList: completeRewardList
+			});
+
+		case actions.CAN_I_BUY_IT:
+			return Object.assign({}, state, {
+				isBuyable: action.payload
 			});
 
 		default:

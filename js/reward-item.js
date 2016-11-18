@@ -5,9 +5,16 @@ import * as actions from './redux/actions';
 
 class RewardItem extends Component {
 	onBuyPressed() {
-		//if you have enough tickets...
-		this.props.dispatch(actions.decreaseTicketCount(this.props.reward.cost));
-		this.props.dispatch(actions.increaseItemAmount(this.props.index));
+		if(this.props.ticketCount < this.props.reward.cost) {
+			//you do not have enough tickets to purchase this item
+			this.props.dispatch(actions.canIBuyIt(false));
+		}
+		else {
+			//you have enough tickets
+			this.props.dispatch(actions.canIBuyIt(true));
+			this.props.dispatch(actions.decreaseTicketCount(this.props.reward.cost));
+			this.props.dispatch(actions.increaseItemAmount(this.props.index));
+		}
 	}
 
 	render() {
@@ -28,7 +35,13 @@ class RewardItem extends Component {
 	}
 }
 
-export default connect()(RewardItem);
+let mapStateToProps = function(state, props) {
+	return {
+		ticketCount: state.ticketCount,
+	}
+}
+
+export default connect(mapStateToProps)(RewardItem);
 
 const styles = StyleSheet.create({
 	mainContainer: {

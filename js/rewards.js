@@ -6,6 +6,7 @@ import RewardItem from './reward-item';
 
 class Rewards extends Component {
 	render() {
+		const feedback = this.props.isBuyable ? (<Text style={styles.money}>You bought it!</Text>) : (<Text style={styles.noMoney}>Insufficient funds :(</Text>);
 		return(
 			<View>
 				<View style={styles.topContainer}>
@@ -13,6 +14,10 @@ class Rewards extends Component {
 	                    &nbsp;
 	                    <Text style={styles.underline}>{this.props.ticketCount}</Text>
 	                </Text>
+	            </View>
+
+	            <View style={styles.feedbackContainer}>
+	            	{feedback}
 	            </View>
 				
 				{this.props.rewardList.map((reward, index) => <RewardItem key={index} index={index} reward={reward} />)}
@@ -25,6 +30,7 @@ let mapStateToProps = function(state, props) {
 	return {
 		ticketCount: state.ticketCount,
 		rewardList: state.rewardList,
+		isBuyable: state.isBuyable,
 	}
 }
 
@@ -45,4 +51,16 @@ const styles = StyleSheet.create({
     underline: {
         textDecorationLine: 'underline',
     },
+    feedbackContainer: {
+    	marginTop: 80,
+    	justifyContent: 'center',
+    },
+    money: {
+    	color: '#3ad849',
+    	fontSize: 20,
+    },
+    noMoney: {
+    	color: '#ef3232',
+    	fontSize: 20,
+    }
 });
