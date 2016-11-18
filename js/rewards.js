@@ -39,7 +39,7 @@ export default connect(mapStateToProps)(Rewards);
 const styles = StyleSheet.create({
 	topContainer: {
         marginTop: 60,
-        marginBottom: 60,
+        marginBottom: 30,
         paddingRight: 12,
     },
     ticketText: {
@@ -52,15 +52,17 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
     },
     feedbackContainer: {
-    	marginTop: 80,
+    	marginBottom: 30,
     	justifyContent: 'center',
     },
     money: {
     	color: '#3ad849',
     	fontSize: 20,
+    	textAlign: 'center',
     },
     noMoney: {
     	color: '#ef3232',
     	fontSize: 20,
+    	textAlign: 'center',
     }
 });
